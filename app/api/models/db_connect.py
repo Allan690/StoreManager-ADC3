@@ -10,6 +10,7 @@ class DatabaseConnection:
         self.db_name = Config.DB_NAME
         self.db_user = Config.DB_USER
         self.db_password = Config.DB_PASSWORD
+        self.db_port = Config.DB_PORT
         self.conn = None
 
     def connection(self):
@@ -18,14 +19,16 @@ class DatabaseConnection:
                 self.conn = psycopg2.connect(database="testing_db",
                                              password=self.db_password,
                                              user=self.db_user,
-                                             host=self.db_host
+                                             host=self.db_host,
+                                             port=self.db_port
                                              )
             if os.getenv("APP_SETTINGS") == "development":
                 self.conn = psycopg2.connect(
                     database=self.db_name,
                     password=self.db_password,
                     user=self.db_user,
-                    host=self.db_host
+                    host=self.db_host,
+                    port=self.db_port
                 )
 
         except Exception as e:

@@ -1,7 +1,7 @@
 import os
 
 
-class Config():
+class Config:
     # Parent config class
     DEBUG = False
     SECRET_KEY = os.getenv('SECRET_KEY')
@@ -9,6 +9,7 @@ class Config():
     DB_HOST = os.getenv("DB_HOST")
     DB_USER = os.getenv("DB_USER")
     DB_PASSWORD = os.getenv("DB_PASSWORD")
+    DB_PORT = os.getenv("DB_PORT")
 
 
 class Development(Config):
